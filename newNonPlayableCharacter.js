@@ -1,9 +1,9 @@
 function newNonPlayableCharacter(x, y) {
     let element = newImage('assets/red-character/static.gif')
     element.style.zIndex = 1;
-    
-    let direction = null;
 
+    let direction = null;
+    // TEACHING THE CHARACTER WHERE TO WALK ----------------------------
     function moveCharacter() {
         if (direction === 'west') {
             x -= 1
@@ -23,26 +23,51 @@ function newNonPlayableCharacter(x, y) {
 
     setInterval(moveCharacter, 1)
 
-    function walkEast() {
+    //  THIS IS FOR WALKING EAST ----------------------------
+    function walkEast(time, callback) {
         direction = 'east'
         element.src = `./assets/red-character/east.gif`
+        setTimeout(() => {
+            stop()
+            if (callback) {
+                callback()
+            }
+        }, time)
     }
-
-    function walkNorth() {
+    //  THIS IS FOR WALKING NORTH ----------------------------
+    function walkNorth(time, callback) {
         direction = 'north'
         element.src = `./assets/red-character/north.gif`
+        setTimeout(() => {
+            stop()
+            if (callback) {
+                callback()
+            }
+        }, time)
     }
-
-    function walkWest() {
+    //  THIS IS FOR WALKING WEST ----------------------------
+    function walkWest(time, callback) {
         direction = 'west'
         element.src = `./assets/red-character/west.gif`
+        setTimeout(() => {
+            stop()
+            if (callback) {
+                callback()
+            }
+        }, time)
     }
-
-    function walkSouth() {
+    //  THIS IS FOR WALKING SOUTH ----------------------------
+    function walkSouth(time, callback) {
         direction = 'south'
         element.src = `./assets/red-character/south.gif`
+        setTimeout(() => {
+            stop()
+            if (callback) {
+                callback()
+            }
+        }, time)
     }
-
+    //  THIS IS FOR STOPPING ----------------------------
     function stop() {
         direction = null
         element.src = `./assets/red-character/static.gif`
